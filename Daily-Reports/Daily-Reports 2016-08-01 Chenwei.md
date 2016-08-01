@@ -1,4 +1,4 @@
-# Daily Report 2016-08-01
+# Daily Report 2016-08-01  by Chenwei
 
 ##Current Statement
 
