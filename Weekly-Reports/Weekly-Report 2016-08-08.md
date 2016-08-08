@@ -20,3 +20,4 @@ Chenwei01 from THTF company.
    Then the background of the text dispeared. 
    
 Some debug job is done friday and satday. Got a final ver0.1 as below.  
+![BOTO](https://github.com/openthos/boto-analysis/blob/master/Screenshots/Cibershot%20from%202016-08-06%2007-52-41.jpg)
