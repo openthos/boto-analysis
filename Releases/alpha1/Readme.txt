@@ -19,8 +19,17 @@
 3. UEFI boot mode activated
 4. Secure boot deactivated
 
+[Notice]
+--------------------------------------------------------------------------------
+#### IF THE SCREEN IS NOT 1920x1080 PLEASE MODIFY efi\boot\refind ####
+@line: 142
+  Change "resolution 1920 1080" with the resolution of you screen.
+#### Some 1366x768 screen may have no 1366x768 mode in UEFI environment ####
+  Try 1280x768.
 
-[How to install]
+
+
+[How to install BOTO]
 --------------------------------------------------------------------------------
   It is assumed that you are going to install it on bare platform without anyth-
 ing installed.  You can do it with a windows install media or an ubuntu live me-
@@ -110,3 +119,14 @@ ract efi folder into esp folder.
     14) Run "sync;sync;sync" to flush buffer.
     15) Run "sudo umount /mnt" to umount EFI system partition.
     And turn of the platform, the boto is stanby now.
+    
+[How to install Windows]
+--------------------------------------------------------------------------------
+  While BOTO is ready, you can install windows now. Windows' installer will keep 
+BOTO as the bootloader as it found ESP:\efi\boot\bootx64.efi.
+
+[How to install OpenTHOS]
+--------------------------------------------------------------------------------
+  Install OpenTHOS with the live usb, but do not install grub or grub efi.
+  After succedded the installing, move evthing form the "Android_X86_YYYY_MM_DD"
+Direcotry to the root of the ext4 partition and rename kernel to otoKernel.
