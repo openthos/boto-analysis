@@ -101,23 +101,23 @@ ract efi folder into esp folder.
           loop0     7:0    0  1.4G  1 loop /rofs
        Now we know /dev/sda is the disk we will install boto.	  
     5) Execute "sudo parted /dev/sda". 
-    6) Run command "mktable gpt" and answer "Yes" to create a new empty GPT par-
-	  tition table. 
-    7) Type "quit" and press enter to exit the parted.
+    6) Run parted command "mktable gpt" and answer "Yes" to create a new empty 
+    GPT partition table. 
 3. Create a EFI system partition on the disk.
-    8) Run "mkpart primary 1049K 83839656K" to create a 8GB primary partition f-
-    rom the start of the disk.
-    8) Run "print" to review the partition created.
+    7) Run parted command "mkpart primary 1049K 83839656K" to create a 8GB prim-
+     ary partition from the start of the disk.
+    8) Run parted command "print" to review the partition created.
           Number  Start  End     Size   File system  Name      Flags
            1      1049KB 8390MB  8389MB fat32        primary
-    9) Run "toggle 1 esp" to convert the partion to EFI format.
-    10) press "quit" press enter to quit the sfdisk environment.   
-    11) Run "sudo mkfs.vfat -F 32 -n ESP /dev/sda1" to format EFI system partition.
+    9) Run parted command "toggle 1 esp" to convert the partion to EFI format.
+    10) Type "quit" press enter to quit the parted environment.   
+    11) Execute "sudo mkfs.vfat -F 32 -n ESP /dev/sda1" to format EFI system par-
+     tition.
 4. Copy boto into the EFI system partition.
-    12) Run "sudo mount /dev/sda1 /mnt" to mount EFI system partition.
-    13) Run "sudo cp -av /rofs/ESP/* mnt" to copy boto to the hard disk.
-    14) Run "sync;sync;sync" to flush buffer.
-    15) Run "sudo umount /mnt" to umount EFI system partition.
+    12) Execute "sudo mount /dev/sda1 /mnt" to mount EFI system partition.
+    13) Execute "sudo cp -av /rofs/ESP/* mnt" to copy boto to the hard disk.
+    14) Execute "sync;sync;sync" to flush buffer.
+    15) Execute "sudo umount /mnt" to umount EFI system partition.
     And turn of the platform, the boto is stanby now.
     
 [How to install Windows]
