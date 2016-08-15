@@ -34,7 +34,7 @@
   It is assumed that you are going to install it on bare platform without anyth-
 ing installed.  You can do it with a windows install media or an ubuntu live me-
 dia (16.04 e.g.)
-## Do with Winows 10 UEFI Install USB drive. ##
+## Do it with Winows 10 UEFI Install USB drive. ##
 -----------------------------------------------
 1. Prepair a Windows 10 Install USB drive with boto stored on your working PC.
   Create a esp folder on the USB drive. Download boto_alpha1.tar.gz and ext-
@@ -83,7 +83,7 @@ ract efi folder into esp folder.
     20) Close the window cmd.exe and choose "Turn off your PC".
 5. Now BOTO is stanby to work for you.
     
-## Do with UBUNTU 16.04 UEFI Install Media ##
+## Do it with UBUNTU 16.04 UEFI Install Media ##
 --------------------------------------------------
 1. Prepair an UBUNTU 16.04 UEFI USB drive with boto stored on your working pc.
     Create a esp folder on the Ubuntu USB drive. Download boto_alpha1.tar.gz and
