@@ -100,10 +100,10 @@ ract efi folder into esp folder.
           sr0      11:0    1 1024M  0 rom            
           loop0     7:0    0  1.4G  1 loop /rofs
        Now we know /dev/sda is the disk we will install boto.	  
-    5) Execute "sudo sfdisk /dev/sda". 
+    5) Execute "sudo parted /dev/sda". 
     6) Run command "mktable gpt" and answer "Yes" to create a new empty GPT par-
 	  tition table. 
-    7) Type "exit" and press enter to exit the sfdisk.
+    7) Type "quit" and press enter to exit the parted.
 3. Create a EFI system partition on the disk.
     8) Run "mkpart primary 1049K 83839656K" to create a 8GB primary partition f-
     rom the start of the disk.
