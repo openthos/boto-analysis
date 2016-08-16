@@ -104,7 +104,7 @@ ract efi folder into esp folder.
     6) Run parted command "mktable gpt" and answer "Yes" to create a new empty 
     GPT partition table. 
 3. Create a EFI system partition on the disk.
-    7) Run parted command "mkpart primary 1049K 83839656K" to create a 8GB prim-
+    7) Run parted command "mkpart primary 1049K 8389656K" to create a 8GB prim-
      ary partition from the start of the disk.
     8) Run parted command "print" to review the partition created.
           Number  Start  End     Size   File system  Name      Flags
