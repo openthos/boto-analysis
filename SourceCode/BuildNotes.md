@@ -77,7 +77,7 @@ Conf/target.txt.patch
 To build Refind, you should have UDK2014 installed to /usr/local.  Open another terminal other than the one used to setup edk2, and run commands listed below.
 ```bash
 user@machine:~$ wget http://downloads.sourceforge.net/project/edk2/UDK2014_Releases/UDK2014.SP1.P1\
-> /UDK2014.SP1.P1.Complete.MyWorkSpace.zip
+/UDK2014.SP1.P1.Complete.MyWorkSpace.zip
 user@machine:~$ mkdir temp
 user@machine:~$ unzip UDK2014.SP1.P1.Complete.MyWorkSpace.zip -d temp/
 user@machine:~$ sudo chmod a+w /usr/local/UDK2014
