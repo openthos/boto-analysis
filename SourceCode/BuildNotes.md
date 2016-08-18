@@ -1,12 +1,12 @@
 # BOTO: HOW TO BUILD
 ## Consists
-Boto V1 consists of below modules:
+Boto consists of below modules:
 ### ExecuteEfiApp
 ExecuteEfiApp is the caller to the other modules.
 ### Font
 Font is the language support package.
 ### Refind (Boto Edition)
-Boto V1 is branch based on refind. Original Refind does not support Chinese Character. This is why a boto branch is created.
+Boto is branch based on refind. Original Refind does not support Chinese Character. This is why a boto branch is created.
 
 ## Dependencies
 ### Ubuntu 16.04.1 X64
