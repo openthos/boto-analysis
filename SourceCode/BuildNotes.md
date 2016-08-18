@@ -169,8 +169,10 @@ user@machine:edk2$ source edksetup.sh BaseTools
 ### How to build Refind (Boto Edition)
 It's easier than easier for you to build Boto edition Refind. Just type "make" and press ENTER in the terminal under the directory that stands for the source code of Boto Edition Refind.
 ```bash
-user@machine:refind_0.10.3$ make
+user@machine:refind_0.10.3$ make all
 ```
+## Create binary release of Boto
+
 ## Install Boto to the real platform
 There no independent installer provided. If you want to integrate boto with your OS product, the OS installer should be modified to have boto installed.
 For test purpose you can install Boto by a Windows 10 USB Install Media or Ubuntu 16.04.1 USB Install Media. Please refer sections within  [Readme.txt](https://github.com/openthos/boto-analysis/blob/master/Releases/alpha1/Readme.txt) from the [binary Releases/Alpha1](../Releases/alpha1).
