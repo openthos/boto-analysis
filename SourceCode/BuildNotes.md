@@ -136,8 +136,18 @@ Resume the job in the terminal. Run "build" under the directory /usr/local/UDK20
 user@machine:MyWorkSpace$ build
 ```
 As the building process succeeded, UDK2014 is ready for you to build Refind.
-# Build Boto Modules
-## How to build RunEfiApp
+## Download the source code of BOTO
+### Download from the git tree
+### Download .tar.gz from [SourceCode](.)
+The source code .tar.gz file under [SourceCode](.) are named like BotoPkg_Src-x.y.z.tar.gz, where x.y.z stands for a version number. For v0.0.1 the file will be BotoPkg_Src-0.0.1.tar.gz.  
+Just click the version under [SourceCode](.) that you want to use, and press *Download* button after the page updated.  
+Move the file BotoPkg_Src-x.y.z.tar.gz to your home directory and then run command listed below to untar the file into the directory edk2.
+```bash
+user@machine:~$ tar xfv BotoPkg_Src-x.y.z.tar.gz -C edk2
+```
+Now a subdirectory named *BotoPkg* will appears in the *edk2* directory.
+## Build Boto Modules
+### How to build RunEfiApp
 It very simple to build RunEfiApp, just run build command like below within a termial.
 ```bash
 user@machine:edk2$ build -p BotoPkg/BotoPkg.dsc -m BotoPkg/Apps/RunEfiApp/RunEfiApp.inf
@@ -146,7 +156,7 @@ If your are prompt with "No command 'build' found", it means that you are in the
 ```bash
 user@machine:edk2$ source edksetup.sh BaseTools
 ```
-## How to build BotoFont
+### How to build BotoFont
 It very simple to build BotoFont, just run build command like below within a termial.
 ```bash
 user@machine:edk2$ build -p BotoPkg/BotoPkg.dsc -m BotoPkg/fonts/BotoFont/font.inf
@@ -155,15 +165,15 @@ If your are prompt with "No command 'build' found", it means that you are in the
 ```bash
 user@machine:edk2$ source edksetup.sh BaseTools
 ```
-## How to build Refind (Boto Edition)
+### How to build Refind (Boto Edition)
 It's easier than easier for you to build Boto edition Refind. Just type "make" and press ENTER in the terminal under the directory that stands for the source code of Boto Edition Refind.
 ```bash
 user@machine:refind_0.10.3$ make
 ```
-# Install Boto to the real platform
+## Install Boto to the real platform
 There no independent installer provided. If you want to integrate boto with your OS product, the OS installer should be modified to have boto installed.
-For test purpose you can install Boto by a Windows 10 USB Install Media or Ubuntu 16.04.1 USB Install Media. Please refer sections within  [Readme.txt](https://raw.githubusercontent.com/openthos/boto-analysis/master/Releases/alpha1/Readme.txt) from the binary release.
+For test purpose you can install Boto by a Windows 10 USB Install Media or Ubuntu 16.04.1 USB Install Media. Please refer sections within  [Readme.txt](https://github.com/openthos/boto-analysis/blob/master/Releases/alpha1/Readme.txt) from the binary release.
 
-# FOR MORE INFORMATION
+## FOR MORE INFORMATION
 Please contact me for more information if neccessary.
 Mail: [chanuei@sina.com](mailto:chanuei@sina.com) or [chenwei01@thtfpc.com](mailto:chenwei01@thtfpc.com)
