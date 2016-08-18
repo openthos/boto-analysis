@@ -1,5 +1,4 @@
 # BOTO: HOW TO BUILD
-***
 ## Consists
 Boto V1 consists of below modules:
 ### ExecuteEfiApp
