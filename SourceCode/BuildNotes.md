@@ -14,7 +14,7 @@ Ubuntu 16.04.1 is the platform to build everthing. If possible please use a real
 Packages build-essential, iasl, nasm is necessary.  To install them, execute
 below command.
 ```bash
-user@machine:~$ sudo apt-get install build-essential iasl nasm uuid-dev xorg-dev
+user@machine:~$ sudo apt-get install build-essential iasl nasm uuid-dev xorg-dev git
 ```
 Maybe other edition of Ubuntu or other Linux distributions could works well.  How ever Ubuntu 16.04.1 is recommended.
 ### edk2
