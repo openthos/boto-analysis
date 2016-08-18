@@ -19,7 +19,7 @@ fi
 mkdir -p ${DEST_DIR}
 
 cp -av refind-${BOTO_REFIND_VERSION}/drivers_x64 ${DEST_DIR}
-cp -av refind-${BOTO_REFIND_VERSION}/refind/refind_x64.efi efi/boot/botoX64.efi ${DEST_DIR}
+cp -av refind-${BOTO_REFIND_VERSION}/refind/refind_x64.efi  ${DEST_DIR}/botoX64.efi
 cp -av refind-${BOTO_REFIND_VERSION}/icons ${DEST_DIR}
 cp -av refind-${BOTO_REFIND_VERSION}/themes ${DEST_DIR}
 cp -av refind-${BOTO_REFIND_VERSION}/refind.conf ${DEST_DIR}
