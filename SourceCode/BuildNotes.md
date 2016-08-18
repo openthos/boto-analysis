@@ -3,8 +3,8 @@
 Boto consists of below modules:
 ### ExecuteEfiApp
 ExecuteEfiApp is the caller to the other modules.
-### Font
-Font is the language support package.
+### BotoFont
+BotoFont is the language support package.
 ### Refind (Boto Edition)
 Boto is branch based on refind. Original Refind does not support Chinese Character. This is why a boto branch is created.
 
@@ -14,7 +14,7 @@ Ubuntu 16.04.1 is the platform to build everthing. If possible please use a real
 Packages build-essential, iasl, nasm is necessary.  To install them, execute
 below command.
 ```bash
-user@machine:~$ sudo apt-get install build-essential iasl nasm uuid-dev xorg-dev git
+user@machine:~$ sudo apt-get install build-essential iasl nasm uuid-dev xorg-dev git p7zip-full
 ```
 Maybe other edition of Ubuntu or other Linux distributions could works well.  How ever Ubuntu 16.04.1 is recommended.
 ### edk2
@@ -23,9 +23,10 @@ Perhaps the tianocore managed edition works well.  Run command as below to get i
 ```bash
 user@machine:~$ git clone https://github.com/tianocore/edk2.git
 ```
-If error occurs while you are trying to build RunEfiApp and Font with tianocore managed garage, please download edk2.tar.gz here. Untar the package after download.  Open a terminal and run:
+If error occurs while you are trying to build RunEfiApp and BotoFont with tianocore managed garage, please download edk2.tar.gz here. Untar the package after download.  Open a terminal and run:
 ```bash
-user@machine:~$ tar zxfv edk2.tar.gz
+user@machine:~$ wget https://github.com/openthos/boto-analysis/raw/master/SourceCode/edk2.7z
+user@machine:~$ 7z x edk2.7z
 user@machine:~$ cd edk2/BaseTools
 user@machine:BaseTools$ make -C Source/C
 user@machine:BaseTools$ make
