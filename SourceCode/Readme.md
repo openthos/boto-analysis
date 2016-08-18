@@ -1,4 +1,6 @@
-# Source Code of BOTO is here
+#Where to download the source code 
+The tar ball Source Code of BOTO is here. Just down click the one you want to use, and then press the download button.
+If you want to download the neweast one, please clone from the git tree.
 
 ## Maintained by: David Chan
 
