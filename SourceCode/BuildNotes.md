@@ -173,7 +173,7 @@ user@machine:refind_0.10.3$ make
 ```
 ## Install Boto to the real platform
 There no independent installer provided. If you want to integrate boto with your OS product, the OS installer should be modified to have boto installed.
-For test purpose you can install Boto by a Windows 10 USB Install Media or Ubuntu 16.04.1 USB Install Media. Please refer sections within  [Readme.txt](https://github.com/openthos/boto-analysis/blob/master/Releases/alpha1/Readme.txt) from the binary release.
+For test purpose you can install Boto by a Windows 10 USB Install Media or Ubuntu 16.04.1 USB Install Media. Please refer sections within  [Readme.txt](https://github.com/openthos/boto-analysis/blob/master/Releases/alpha1/Readme.txt) from the [binary Releases/Alpha1](../Releases/alpha1).
 
 ## FOR MORE INFORMATION
 Please contact me for more information if neccessary.
