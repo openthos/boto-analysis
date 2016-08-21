@@ -7,7 +7,20 @@ ExecuteEfiApp is the caller to the other modules.
 BotoFont is the language support package.
 ### Refind (Boto Edition)
 Boto is branch based on refind. Original Refind does not support Chinese Character. This is why a boto branch is created.
-
+## Directory Structure refered by this guide.
+It is assumed that you have follown directoy structure to build BOTO.
+```shell
+/                           # Root of the filesystem.
+├─home
+│   └─user                  # The home directory used to build boto
+│       ├─edk2              # The location refered by createrelease.sh
+│       │   └─BotoPkg
+│       ├─refind_0.10.3     # The location refered by createrelease.sh
+│       └─createrelease.sh
+└─usr
+    └─local
+        └─UDK2014           # The location refered by refind_0.10.3
+```
 ## Dependencies
 ### Ubuntu 16.04.1 X64
 Ubuntu 16.04.1 is the platform to build everthing. If possible please use a real platform, but not a VMware one to avoid potential problem. As on my VMware one, the ENVIRONMENT variable will not refresh well. "source edksetup.sh BaseTools" keeps complaining to me with "bash:  /home/chanuei/edk2/BaseTools/BuildEnv: No such file or directory".
