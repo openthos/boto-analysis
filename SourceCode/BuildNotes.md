@@ -1,8 +1,8 @@
 # BOTO: HOW TO BUILD
 ## Consists
 Boto consists of below modules:
-### ExecuteEfiApp
-ExecuteEfiApp is the caller to the other modules.
+### RunEfiApp
+RunEfiApp is the caller to the other modules.
 ### BotoFont
 BotoFont is the language support package.
 ### Refind (Boto Edition)
@@ -15,8 +15,12 @@ It is assumed that you have follown directoy structure to build BOTO.
 │   └─user                  # The home directory used to build boto
 │       ├─edk2              # The location refered by createrelease.sh
 │       │   └─BotoPkg
+│       │        ├─Apps
+│       │        │   └─RunEfiApp  # The source code of RunEfiApp
+│       │        └─fonts
+│       │            └─BotoFont   # The source code of RunEfiApp
 │       ├─refind_0.10.3     # The location refered by createrelease.sh
-│       └─createrelease.sh
+│       └─createrelease.sh  # The script used to create Boto Binary tar ball.
 └─usr
     └─local
         └─UDK2014           # The location refered by refind_0.10.3
@@ -151,15 +155,20 @@ user@machine:MyWorkSpace$ build
 ```
 As the building process succeeded, UDK2014 is ready for you to build Refind.
 ## Download the source code of BOTO
-### Download from the git tree
-### Download .tar.gz from [SourceCode](.)
-The source code .tar.gz file under [SourceCode](.) are named like BotoPkg_Src-x.y.z.tar.gz, where x.y.z stands for a version number. For v0.0.1 the file will be BotoPkg_Src-0.0.1.tar.gz.  
+### Download BotPkg_Src_x.y.z.tar.gz from [SourceCode](.)
+The source code of BotoPkg under [SourceCode](.) are named like BotoPkg_Src-x.y.z.tar.gz, where x.y.z stands for a version number. For v0.0.1 the file will be BotoPkg_Src-0.0.1.tar.gz.  
 Just click the version under [SourceCode](.) that you want to use, and press *Download* button after the page updated.  
 Move the file BotoPkg_Src-x.y.z.tar.gz to your home directory and then run command listed below to untar the file into the directory edk2.
 ```bash
 user@machine:~$ tar xfv BotoPkg_Src-x.y.z.tar.gz -C edk2
 ```
 Now a subdirectory named *BotoPkg* will appears in the *edk2* directory.
+### Download source code of Refind-0.10.3.tar.gz
+Click [refind-0.10.3.tar.gz](refind-0.10.3.tar.gz) under [SourceCode](.), and press *Download* button after the page updated.  
+Move the file refind-0.10.3.tar.gz to your home directory and then run command listed below to untar the file into the directory edk2.
+```bash
+user@machine:~$ tar xfv refind-0.10.3.tar.gz -C ~
+```
 ## Build Boto Modules
 ### How to build RunEfiApp
 It very simple to build RunEfiApp, just run build command like below within a termial.
