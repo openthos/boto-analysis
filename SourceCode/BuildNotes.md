@@ -182,7 +182,7 @@ user@machine:edk2$ source edksetup.sh BaseTools
 ### How to build Refind (Boto Edition)
 It's easier than easier for you to build Boto edition Refind. Just type "make" and press ENTER in the terminal under the directory that stands for the source code of Boto Edition Refind.
 ```bash
-user@machine:refind_0.10.3$ make all
+user@machine:refind_0.10.3$ make tiano fs_tiano
 ```
 ## Create binary release of Boto
 
