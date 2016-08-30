@@ -1,0 +1,234 @@
+#!/bin/busybox sh
+
+# By
+# David Chen (chenwei01@thtfpc.com or chanuei@sina.com)
+
+# Last updated 2016/08/30
+
+# License: GPL 2.0
+
+
+SYSTEM_MOUNTPOINT="/android/system"
+DATA_MOUNTPOINT="/android/data"
+
+# START: early init
+# ==============================================================================
+  PATH=/sbin:/bin:
+  export PATH
+  
+  busybox install -s
+  
+  mount -t proc proc /proc
+  mount -t sysfs sysfs /sys
+  
+  echo /sbin/mdev > /proc/sys/kernel/hotplug
+  mdev -s
+  
+# END: early boot
+# ------------------------------------------------------------------------------
+
+# BEGIN: FUNC_DEF
+# ==============================================================================
+
+  error()
+  {
+    echo $*
+    return -1
+  }
+  
+  failedboot()
+  {
+    read -p "Please any key to shutdown the system" var
+    shutdown -h now
+  }
+  
+  get_boot_mode()
+  {
+    for c in `cat /pro/cmdline`; do
+      case $c in
+        BOOT_MODE=*)
+          eval `echo $c`
+          ;;
+        *)
+          ;;
+      esac
+    done
+  }
+  
+  get_hd_uuid()
+  {
+    if [ `ls $(SYSTEM_MOUNTPOINT)|wc -l`=0]; then
+      return "noneed"
+    else
+      for c in `cat /pro/cmdline`; do
+        case $c in
+          $1=*)
+            eval `echo $c`
+            if [ -n "$1" ]
+              return "uuidok"
+            fi
+            ;;
+          *)
+            ;;
+        esac
+      done
+      return "nouuid"
+    fi
+  }
+  
+  get_hd_fstype()
+  {
+    return `blkid |grep $1|awk -F "\"" '{print $6;}'`
+  }
+  
+  hint_wrongext()
+  {
+    if [ $1="RAMDISK_IMG" ]; then
+      "$1 has wrong file ext, the right ext should be .img"
+    else
+      echo "$1 has wrong file ext, the right ext should be .sfs or .img"
+    fi
+    failedboot
+  }
+  
+  hint_nouuid()
+  {
+    case $1 in
+      "SYSTEM_HD_UUID")
+        echo "No uuid for SYSTEM partition found!"
+        echo "    will try whatsever in /android/system"
+        ;;
+      "DATA_HD_UUID")
+        echo "No uuid for DATA partition found!"
+        echo "    will try whatsever in /android/data"
+        ;;
+      "RAMDISK_HD_UUID")
+        echo "No uuid for RAMDISK partition found!"
+        echo "    will try whatsever in /android"
+        ;;
+    esac
+  }
+  
+  hint_noboot()
+  {
+    echo "No BOOT_MODE found within the bootargs"
+    echo "  Please check the menuentry setting in file ESP:/efi/boot/refind.conf"
+    failedboot
+  }
+  
+# END: FUNC_DEF
+# ------------------------------------------------------------------------------
+
+# START: init
+# ==============================================================================
+
+  BOOT_MODE="noboot"
+  get_boot_mode
+  
+  case $BOOT_MODE in
+    "install")
+      ;;
+      
+    "liveboot")
+      ;;
+      
+    "hdimgboot")
+      case `get_hd_uuid "RAMDISK_HD_UUID"` in
+        "nouuid")
+          hint_nouuid "RAMDISK_HD_UUID"
+          ;;
+        "uuidok")
+          if [ ! -e "/mnt/ramdisk_location" ]; then
+            mkdir -p /mnt/ramdisk_location
+          fi
+          mount -t `get_hd_fstype ${RAMDISK_HD_UUID}` -o ro UUID=${RAMDISK_HD_UUID} /mnt/ramdisk_location
+          if [ `echo ${RAMDISK_IMG} | rev | cut -b -4 | rev`=".img" ]; then
+            pushd /android
+            zcat ${RAMDISK_IMG}/${RAMDISK_IMG} | cpio -id > /dev/null
+            popd
+          else
+            hint_wrongext "RAMDISK_IMG"
+          fi
+          ;;
+      esac
+      case `get_hd_uuid "SYSTEM_HD_UUID"` in
+        "nouuid")
+          hint_nouuid "SYSTEM_HD_UUID"
+          ;;
+        "uuidok")
+          if [ ! -e "/mnt/system_location" ]; then
+            mkdir -p /mnt/system_location
+          fi
+          mount -t `get_hd_fstype ${SYSTEM_HD_UUID}` -o ro UUID=${SYSTEM_HD_UUID} /mnt/system_location
+          if [ `echo ${SYSTEM_IMG} | rev | cut -b -4 | rev`=".sfs" ]; then
+            if [ ! -e "/mnt/system_location" ]; then
+              mkdir -p /mnt/system.sfs
+            fi
+            mount -o loop /mnt/system_location/${SYSTEM_IMG} /mnt/system.sfs
+            mount -o loop,ro /mnt/system.sfs/system.img ${SYSTEM_MOUNTPOINT}
+          elif [ `echo ${SYSTEM_IMG} | rev | cut -b -4 | rev`=".img" ]; then
+            mount -o loop,ro /mnt/system_location/${SYSTEM_IMG} ${SYSTEM_MOUNTPOINT}
+          else
+            hint_wrongext "SYSTEM_IMG"
+          fi
+          ;;
+      esac
+      case `get_hd_uuid "DATA_HD_UUID"` in
+        "nouuid")
+          hint_nouuid "DATA_HD_UUID"
+          ;;
+        "uuidok")
+          if [ ! -e "/mnt/data_location" ]; then
+            mkdir -p /mnt/data_location
+          fi
+          mount -t `get_hd_fstype ${DATA_HD_UUID}` -o ro UUID=${DATA_HD_UUID} /mnt/data_location
+          if [ `echo ${DATA_IMG} | rev | cut -b -4 | rev`=".sfs" ]; then
+            if [ ! -e "/mnt/data_location" ]; then
+              mkdir -p /mnt/data.sfs
+            fi
+            mount -o loop /mnt/data_location/${DATA_IMG} /mnt/data.sfs
+            mount -o loop,ro /mnt/data.sfs/data.img ${DATA_MOUNTPOINT}
+          elif [ `echo ${DATA_IMG} | rev | cut -b -4 | rev`=".img" ]; then
+            mount -o loop,rw /mnt/data_location/${DATA_IMG} ${DATA_MOUNTPOINT}
+          else
+            hint_wrongext "DATA_IMG"
+          fi
+          ;;
+      esac
+
+
+      ;;
+      
+    "hdboot")
+      case `get_hd_uuid "SYSTEM_HD_UUID"` in
+        "nouuid")
+          hint_nouuid "SYSTEM_HD_UUID"
+          ;;
+        "uuidok")
+          mount -t `get_hd_fstype ${SYSTEM_HD_UUID}` -o ro UUID=${SYSTEM_HD_UUID} ${SYSTEM_MOUNTPOINT}
+          ;;
+      esac
+      ;;
+      case `get_hd_uuid "DATA_HD_UUID"` in
+        "nouuid")
+          hint_nouuid "DATA_HD_UUID"
+          ;;
+        "uuidok")
+          mount -t `get_hd_fstype ${DATA_HD_UUID}` -o rw UUID=${DATA_HD_UUID} ${DATA_MOUNTPOINT}
+          ;;
+      esac
+      ;;
+      
+    "noboot")
+      hint_noboot
+      ;;
+  esac
+
+# End: init
+# ------------------------------------------------------------------------------
+
+# START: boot android
+# ==============================================================================
+  echo "Openthos GUI start..."
+# End: boot android
+# ------------------------------------------------------------------------------
