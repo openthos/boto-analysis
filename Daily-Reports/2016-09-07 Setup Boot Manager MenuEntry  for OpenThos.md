@@ -15,6 +15,7 @@ Directory Structure for live media should be.
 │      ├─bootx64.efi               #grub2 efi bootmanager
 │      └─grub.cfg                  #grub2 efi configuration file
 └─OpenThos
+   ├─kernel
    ├─initrd.img
    ├─install.img
    ├─system.img
@@ -46,6 +47,7 @@ Directory Structure for live media should be.
 │      ├─bootx64.efi               #grub2 efi bootmanager
 │      └─grub.cfg                  #grub2 efi configuration file
 └─OpenThos
+   ├─kernel
    ├─initrd.img
    ├─install.img
    ├─system.img
