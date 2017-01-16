@@ -43,3 +43,5 @@ Windows 10
 ```
 将其中的UUID替换成你机器上的实际UUID。  
 下面我们以bootice为例讲述，如何在windows平台上获得NTFS分区的UUID。  
+![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_parts_manager.PNG?raw=true)  
+在“Physical Disk”标签面，选择包含OpenThos文件夹所在分区的磁盘后，点击“Parts Manage”  
