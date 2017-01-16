@@ -48,4 +48,4 @@ Windows 10
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_parts_manager_open.PNG?raw=true)  
 在对应的分区上双击，将打开“Sector Edit”工具
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_sector_editor.PNG?raw=true)  
-定位到0x48处，连续的8个字节即为NTFS分区的serial number，也是linux下blkid工具能读到的UUID。注意记录时的顺序应从高字节向低字节记录，即由后向前看。
+定位到0x48处，连续的8个字节即为NTFS分区的serial number，也是linux下blkid工具能读到的UUID。注意记录时的顺序应从高字节向低字节记录，即由后向前看。本例为84D81B6FD81B5F2C。
