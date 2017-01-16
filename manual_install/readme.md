@@ -27,7 +27,7 @@ Windows 10
 点击“add”按钮，加入目标为z:\efi\boto\bootx64.efi  
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_add_boto.PNG?raw=true)  
 重命名该启动引导项为“Boto Boot Manager”  
-![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_name_boto.PNG?raw=true)  
+![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice_name_boto.PNG?raw=true)  
 通过点击“up”按钮，可以将“Boto Boot Manager”设为默认启动引导器。在某些机器，由于UEFI的设计缺陷可以无法调整启动顺序，请在UEFI设置环境中设置。
 ### 二、安装OPENTHOS
 ### 三、设置OPENTHOS启动参数
