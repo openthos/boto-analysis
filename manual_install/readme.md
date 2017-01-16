@@ -32,7 +32,7 @@ Windows 10
 ### 二、安装OPENTHOS
 选择有足够剩余空间的磁盘分区，在该磁盘上创建一个名为“OpenThos的文件夹”。  
 向该分区拷入kernel、initrd.img、ramdisk.img、system.sfs等文件
-![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/build_openthos_kernel.PNG?raw=true)  
+![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/build_openthos_kernel.PNG?raw=true)  
 在分区上创建data.img文件，并以ext4方式格式化该文件，注意-T为大写  
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/mke2fs.PNG?raw=true)
 ### 三、设置OPENTHOS启动参数
