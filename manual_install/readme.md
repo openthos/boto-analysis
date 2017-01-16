@@ -35,5 +35,9 @@ Windows 10
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/build_openthos_kernel.PNG?raw=true)  
 在分区上创建data.img文件，并以ext4方式格式化该文件，注意-T为大写  
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/mke2fs.PNG?raw=true)
-### 三、设置OPENTHOS启动参数
-
+### 三、设置OPENTHOS启动参数  
+在安装OPENTHOS的文件夹OpenThos下创建文本文件boto_linux.conf
+```
+"OpenThos" "quiet androidboot.hardware=android_x86_64 initrd=OpenThos/initrd.img BOOT_MODE=hdimgboot RAMDISK_HD_UUID=84D81B6FD81B5F2C RAMDISK_IMG=OpenThos/ramdisk.img SYSTEM_HD_UUID=84D81B6FD81B5F2C SYSTEM_IMG=openthos/system.sfs DATA_HD_UUID=84D81B6FD81B5F2C DATA_IMG=openthos/data.img"
+"OpenThos (debug mode)" "quiet androidboot.hardware=android_x86_64 initrd=OpenThos/initrd.img DEBUG=2 BOOT_MODE=hdimgboot RAMDISK_HD_UUID=84D81B6FD81B5F2C RAMDISK_IMG=OpenThos/ramdisk.img SYSTEM_HD_UUID=84D81B6FD81B5F2C SYSTEM_IMG=OpenThos/system.sfs DATA_HD_UUID=84D81B6FD81B5F2C DATA_IMG=OpenThos/data.img"
+```
