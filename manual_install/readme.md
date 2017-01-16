@@ -19,7 +19,7 @@ Windows 10
 1. 打开diskpart，并通过diskpart将ESP分区挂载到z:盘  
 ![图片](./mount_esp.PNG)  
 2. 在z:盘创建efi/boto文件夹，并手动从oto_img方式生成的安装U盘上拷入boto启动文件。  
-![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/build_boto.PNG?raw=true)  
+![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/build_boto.png?raw=true)  
 3. 创建boto启动引导项  
 ![图片](https://github.com/openthos/boto-analysis/blob/master/manual_install/bootice.PNG?raw=true)  
 在bootice工具上选择UEFI标签，将出现如下图的启动选项管理界面  
