@@ -21,7 +21,11 @@ Windows 10
 2. 在z:盘创建efi/boto文件夹，并手动从oto_img方式生成的安装U盘上拷入boto启动文件。  
 ![图片](./build_boto.png)  
 3. 创建boto启动引导项
-
+![图片](./bootice.png)  
+在bootice工具上选择UEFI标签，将出现如下图的启动选项管理界面  
+![图片](./bootice_add.png)  
+点击“add”按钮，加入目标为z:\efi\boto\bootx64.efi
+![图片](./bootice_add_boto.png)  
 ### 二、安装OPENTHOS
 ### 三、设置OPENTHOS启动参数
 
